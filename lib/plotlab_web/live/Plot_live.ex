@@ -1,4 +1,4 @@
-defmodule PlotlabWeb.DashboardLive do
+defmodule PlotlabWeb.PlotLive do
   use PlotlabWeb, :live_view
 
 

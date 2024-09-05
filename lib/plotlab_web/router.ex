@@ -68,7 +68,8 @@ defmodule PlotlabWeb.Router do
       on_mount: [{PlotlabWeb.UserAuth, :ensure_authenticated}] do
       live "/users/settings", UserSettingsLive, :edit
       live "/users/settings/confirm_email/:token", UserSettingsLive, :confirm_email
-      live "/home/plot", DashboardLive, :plot
+      live "/home/plot", PlotLive, :plot
+      live "/home/shared", SharedLive, :shared
     end
   end
 
