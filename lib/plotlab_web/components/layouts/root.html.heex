@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en" class="[scrollbar-gutter:stable]">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="csrf-token" content={get_csrf_token()} />
+    <.live_title suffix=" · Phoenix Framework">
+      <%= assigns[:page_title] || "Plotlab" %>
+    </.live_title>
+    <link phx-track-static rel="stylesheet" href={~p"/assets/app.css"} />
+    <script defer phx-track-static type="text/javascript" src={~p"/assets/app.js"}>
+    </script>
+  </head>
+ <body class="antialiased">
+  <div class="fixed inset-0 -z-10 h-full w-full bg-white bg-[linear-gradient(to_right,#f0f0f0_1px,transparent_1px),linear-gradient(to_bottom,#f0f0f0_1px,transparent_1px)] bg-[size:6rem_4rem]">
+    <div class="absolute inset-0 bg-[radial-gradient(circle_800px_at_100%_200px,#d5c5ff,transparent)]"></div>
+  </div>
+  <%= if @current_user do %>
+  <%!-- do nothing --%>
+  <% else %>
+    <div class="w-full flex items-center justify-between shadow-line backdrop-blur-sm">
+      <div class="w-8/12 flex justify-start items-center">
+        <h1 class="max-w-lg text-3xl font-bold leading-normal px-7 text-gray-900 dark:text-white">PlotLab</h1>
+      </div>
+      <ul class="relative z-10 flex items-center gap-4 px-4 sm:px-6 lg:px-8 justify-end h-16 w-4/12">
+        <li>
+          <.link
+            href={~p"/users/register"}
+            class="text-[0.8125rem] leading-6 text-zinc-900 font-semibold hover:text-zinc-700"
+          >
+            <button class="inline-flex h-12 items-center justify-center rounded-md bg-neutral-950 px-6 font-medium text-neutral-50 shadow-lg shadow-neutral-500/20 transition active:scale-95">Register</button>
+          </.link>
+        </li>
+        <li>
+          <.link
+            href={~p"/users/log_in"}
+            class="text-[0.8125rem] leading-6 text-zinc-900 font-semibold hover:text-zinc-700"
+          >
+            <button class="relative h-12 overflow-hidden rounded-md border border-neutral-200 bg-transparent px-6 text-neutral-950 before:absolute before:bottom-0 before:left-0 before:block before:h-full before:w-full before:translate-y-full before:bg-neutral-100 before:transition-transform hover:before:translate-y-0"><span class="relative">Log in</span></button>
+          </.link>
+        </li>
+      </ul>
+    </div>
+  <% end %>
+
+  <%= @inner_content %>
+</body>
+</html>
