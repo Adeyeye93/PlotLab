@@ -40,7 +40,7 @@ defmodule PlotlabWeb.PlotLive.Index do
   @impl true
   def handle_event("delete", %{"id" => id}, socket) do
     plot = DataVisualization.get_plot!(id)
-    {:ok, _} = DataVisualization.delete_plot(plot)
+     DataVisualization.delete_plot(plot)
 
     {:noreply, stream_delete(socket, :plots, plot)}
   end

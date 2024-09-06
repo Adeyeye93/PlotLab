@@ -37,7 +37,10 @@ end
       ** (Ecto.NoResultsError)
 
   """
-  def get_plot!(id), do: Repo.get!(Plot, id)
+  def get_plot!(id) do
+    Repo.get!(Plot, id)
+    |> Repo.preload(:user)
+  end
 
   @doc """
   Creates a plot.
@@ -54,6 +57,7 @@ end
   def create_plot(attrs \\ %{}, current_user) do
     %Plot{}
     |> Plot.changeset(attrs, current_user)
+    |> Repo.preload(:user)
     |> Repo.insert()
   end
 
@@ -72,6 +76,7 @@ end
   def update_plot(%Plot{} = plot, attrs, current_user) do
     plot
     |> Plot.changeset(attrs, current_user)
+    |> Repo.preload(:user)
     |> Repo.update()
   end
 
@@ -89,6 +94,7 @@ end
   """
   def delete_plot(%Plot{} = plot) do
     Repo.delete(plot)
+    |> Repo.preload(:user)
   end
 
   @doc """

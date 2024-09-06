@@ -1,0 +1,2 @@
+https://github.com/plotly/datasets/blob/61c6e9d314801b0e13fba46c357653a1f938099b/2014_ebola.csv
+https://github.com/plotly/datasets/blob/61c6e9d314801b0e13fba46c357653a1f938099b/2014_usa_states.csv

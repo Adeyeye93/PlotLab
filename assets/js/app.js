@@ -42,3 +42,21 @@ liveSocket.connect()
 // >> liveSocket.disableLatencySim()
 window.liveSocket = liveSocket
 
+
+window.addEventListener("phx:page-loading-stop", ()=>{
+  const plot = document.getElementById("plot-histogram");
+var x = [];
+for (var i = 0; i < 500; i++) {
+  x[i] = Math.random();
+}
+
+var trace = {
+  x: x,
+  type: "histogram",
+};
+var data = [trace];
+Plotly.newPlot(plot, data);
+
+window.addEventListener("phx:")
+})
+
