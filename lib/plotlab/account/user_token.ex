@@ -1,5 +1,5 @@
 defmodule Plotlab.Account.UserToken do
-  use Ecto.Schema
+  use Plotlab.Schema
   import Ecto.Query
   alias Plotlab.Account.UserToken
 

@@ -14,10 +14,10 @@
       </div>
 
       <ul class="mt-8 space-y-2 tracking-wide">
-      <%= if assigns[:page_title] == :"Your Plots" do %>
+      <%= if assigns[:page_title] !== :"Shared with you" do %>
         <li>
           <.link
-            patch={~p"/home/plot"}
+            patch={~p"/plots"}
             aria-label="dashboard"
             class="relative flex items-center space-x-4 rounded-xl bg-gradient-to-r from-sky-600 to-cyan-400 px-4 py-3 text-white"
           >
@@ -41,7 +41,7 @@
         </li>
         <li>
           <.link
-            patch={~p"/home/shared"}
+            patch={~p"/shared"}
             class="group flex items-center space-x-4 rounded-md px-4 py-3 text-gray-600 dark:text-gray-300"
           >
             <svg
@@ -67,7 +67,7 @@
         <% else %>
           <li>
           <.link
-            patch={~p"/home/plot"}
+            patch={~p"/plots"}
             aria-label="dashboard"
             class="group flex items-center space-x-4 rounded-md px-4 py-3 text-gray-600 dark:text-gray-300"
           >
@@ -91,7 +91,7 @@
         </li>
         <li>
           <.link
-            patch={~p"/home/shared"}
+            patch={~p"/shared"}
             class="relative flex items-center space-x-4 rounded-xl bg-gradient-to-r from-sky-600 to-cyan-400 px-4 py-3 text-white"
           >
             <svg
@@ -133,7 +133,13 @@
             d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"
           />
         </svg>
-        <span class="group-hover:text-gray-700 dark:group-hover:text-white">Logout</span>
+        <.link
+            href={~p"/users/log_out"}
+            method="delete"
+            class="text-[0.8125rem] leading-6 text-zinc-900 font-semibold hover:text-zinc-700"
+          >
+          <span class="group-hover:text-gray-700 dark:group-hover:text-white">Logout</span>
+          </.link>
       </button>
     </div>
   </aside>
@@ -188,7 +194,7 @@
 
     <div class="px-6 pt-6 2xl:container">
       <div
-        class="flex h-[80vh] items-center justify-center rounded-xl border-2 border-dashed border-gray-300 dark:border-gray-600"
+        class="flex h-[80vh] items-center justify-center rounded-xl"
       >
         <%= @inner_content %>
       </div>

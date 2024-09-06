@@ -83,3 +83,5 @@ config :phoenix_live_view,
 
 # Disable swoosh api client as it is only required for production adapters.
 config :swoosh, :api_client, false
+
+config :plotlab, Plotlab.Repo, migration_primary_key: [name: :id, type: :binary_id]

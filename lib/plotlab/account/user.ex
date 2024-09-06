@@ -1,5 +1,5 @@
 defmodule Plotlab.Account.User do
-  use Ecto.Schema
+  use Plotlab.Schema
   import Ecto.Changeset
 
   schema "users" do
@@ -8,6 +8,7 @@ defmodule Plotlab.Account.User do
     field :hashed_password, :string, redact: true
     field :current_password, :string, virtual: true, redact: true
     field :confirmed_at, :utc_datetime
+    has_many :plots, Plotlab.DataVisualization.Plot
 
     timestamps(type: :utc_datetime)
   end
